@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t apfaffman/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true apfaffman/docker-react npm run test
